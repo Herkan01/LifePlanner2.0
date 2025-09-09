@@ -90,7 +90,7 @@ main {
     max-width: 1000px;
     background-color: #fff;
     border-radius: 12px;
-    overflow: hidden;
+    overflow-x: auto; /* Horisontell scroll vid små skärmar */
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
@@ -117,14 +117,16 @@ main {
 #calendar {
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7, minmax(0, 1fr)); /* Flexibla kolumner */
     gap: 1px;
     background-color: #ccc;
 }
 
+/* ----------------- Dagar ----------------- */
 .day {
     background-color: #fff;
     min-height: 500px;
+    min-width: 120px; /* Säkerställ att rutorna inte blir för smala */
     position: relative;
     border-radius: 10px;
     overflow: hidden;
@@ -232,5 +234,3 @@ main {
         padding: 4px 6px;
     }
 }
-
-
