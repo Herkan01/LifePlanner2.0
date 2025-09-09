@@ -87,11 +87,11 @@ main {
     display: flex;
     flex-direction: row;
     width: 100%;
-    overflow-x: auto; /* Scrollbar om det inte får plats */
     max-width: 100%;
     background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    overflow-x: auto; /* scroll om dagarna inte får plats */
 }
 
 /* ----------------- Tidkolumn ----------------- */
@@ -116,18 +116,18 @@ main {
 
 /* ----------------- Kalender ----------------- */
 #calendar {
-    display: flex; /* Flex istället för grid */
-    flex-direction: row;
-    min-width: 700px; /* säkerställer att alla dagar får plats */
+    display: flex;
+    flex-wrap: wrap; /* gör att dagarna radbryts */
+    gap: 6px;
+    flex: 1;
 }
 
 /* ----------------- Dagar ----------------- */
 .day {
-    flex: 1;
-    min-width: 100px; /* minsta bredd för dag */
+    flex: 1 1 calc(14.28% - 6px); /* 7 dagar per rad på desktop */
+    min-width: 100px;
     display: flex;
     flex-direction: column;
-    margin: 1px;
     background-color: #fff;
     border-radius: 10px;
     overflow: hidden;
@@ -185,17 +185,16 @@ main {
 }
 
 /* ----------------- Responsivitet ----------------- */
-@media (max-width: 600px) {
-    #calendar-wrapper {
-        min-width: 100%; /* Fyller hela skärmen */
-    }
-
-    #calendar {
-        min-width: 600px; /* gör att användaren kan scrolla horisontellt */
-    }
-
+@media (max-width: 900px) {
     .day {
-        min-width: 80px;
+        flex: 1 1 calc(33.33% - 6px); /* 3 dagar per rad */
+    }
+}
+
+@media (max-width: 600px) {
+    .day {
+        flex: 1 1 100%; /* 1 dag per rad */
+        min-width: auto;
     }
 
     #time-column {
