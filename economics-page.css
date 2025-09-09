@@ -1,3 +1,4 @@
+/* ----------------- Body & Header ----------------- */
 body {
     font-family: 'Roboto', 'Segoe UI', sans-serif;
     margin: 0;
@@ -9,20 +10,20 @@ header {
     background-color: #4CAF50;
     color: white;
     text-align: center;
-    padding: 2rem 1rem;
-    font-size: 1.8rem;
+    padding: 1.8rem 1rem;
+    font-size: 1.6rem;
     box-shadow: 0 3px 10px rgba(0,0,0,0.15);
     position: relative;
 }
 
 header h1 {
     margin: 0;
-    font-size: 2.2rem;
+    font-size: 2rem;
 }
 
 header .back-btn {
     position: absolute;
-    left: 20px;
+    left: 15px;
     top: 50%;
     transform: translateY(-50%);
     text-decoration: none;
@@ -38,53 +39,58 @@ header .back-btn:hover {
     background-color: rgba(255,255,255,0.4);
 }
 
+/* ----------------- Main & Container ----------------- */
 main {
-    padding: 2rem;
     display: flex;
     justify-content: center;
+    padding: 1rem;
 }
 
 .container {
     width: 100%;
     max-width: 700px;
     background-color: #fff;
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    box-sizing: border-box;
 }
 
+/* ----------------- Sections ----------------- */
 section {
-    margin-bottom: 2rem;
+    margin-bottom: 1.8rem;
 }
 
 h2 {
     margin-top: 0;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: #4CAF50;
     border-bottom: 2px solid #4CAF50;
-    padding-bottom: 0.4rem;
+    padding-bottom: 0.3rem;
+}
+
+/* ----------------- Inputs & Buttons ----------------- */
+.input-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 0.5rem;
 }
 
 input {
+    flex: 1;
     padding: 10px 12px;
     border-radius: 10px;
     border: 1px solid #ccc;
     font-size: 1rem;
     font-family: 'Roboto', 'Segoe UI', sans-serif;
     background-color: #fcfcfc;
-    flex: 1;
 }
 
 input:focus {
     outline: none;
     border-color: #4CAF50;
     box-shadow: 0 0 8px rgba(76,175,80,0.3);
-}
-
-.input-group {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
 }
 
 .btn {
@@ -104,10 +110,11 @@ input:focus {
     box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 
+/* ----------------- Utgiftslista ----------------- */
 #expenseList {
     list-style: none;
     padding-left: 0;
-    margin: 0;
+    margin-top: 0.5rem;
 }
 
 #expenseList li {
@@ -129,22 +136,52 @@ input:focus {
     padding: 6px 12px;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 #expenseList li button:hover {
     background-color: #c0392b;
 }
 
+/* ----------------- Saldo ----------------- */
 #balance {
     font-size: 1.3rem;
     font-weight: bold;
     color: #2c3e50;
-    margin-top: 10px;
+    margin-top: 8px;
 }
 
-/* Diagram-stil */
+/* ----------------- Diagram ----------------- */
 canvas {
     max-width: 100%;
-    margin-top: 1rem;
+    margin-top: 0.8rem;
+}
+
+/* ----------------- Mobilanpassning ----------------- */
+@media (max-width: 600px) {
+    .input-group {
+        flex-direction: column;
+    }
+
+    input, .btn {
+        width: 100%;
+        font-size: 0.95rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+    header .back-btn {
+        font-size: 0.9rem;
+        padding: 5px 10px;
+    }
+
+    #balance {
+        font-size: 1.1rem;
+    }
 }
