@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <title>Min Ekonomi</title>
+  <link rel="stylesheet" href="economics-page.css">
+</head>
+<body>
+  <header>
+    <a href="main-page.html" class="back-btn">⬅ Tillbaka</a>
+    <h1>Min Ekonomi</h1>
+  </header>
+
+  <main>
+    <div class="todo-container">
+
+      <!-- Lön -->
+      <section>
+        <h2>Ange din lön</h2>
+        <input type="number" id="salaryInput" placeholder="Skriv in din lön...">
+        <button class="btn" onclick="setSalary()">Spara lön</button>
+      </section>
+
+      <!-- Utgifter -->
+      <section>
+        <h2>Lägg till utgift</h2>
+        <div class="input-group">
+          <!-- Kombinerad dropdown / fritt val -->
+          <input list="expenseTypes" id="expenseName" placeholder="Utgift (t.ex. Hyra)">
+          <datalist id="expenseTypes">
+            <option value="Hyra">
+            <option value="El">
+            <option value="Internet">
+            <option value="Telefon">
+            <option value="Gymkort">
+            <option value="Bil">
+            <option value="Mat">
+            <option value="Transport">
+            <option value="Övrigt">
+          </datalist>
+          <input type="number" id="expenseAmount" placeholder="Belopp">
+          <button class="btn" onclick="addExpense()">➕</button>
+        </div>
+        <ul id="expenseList"></ul>
+      </section>
+
+      <!-- Diagram -->
+      <section>
+        <h2>Fördelning</h2>
+        <canvas id="expenseChart"></canvas>
+      </section>
+
+      <!-- Sparmål -->
+      <section>
+        <h2>Sparmål</h2>
+        <div class="input-group">
+          <input type="number" id="goalAmount" placeholder="Skriv in ditt sparmål...">
+          <input type="number" id="monthlySaving" placeholder="Hur mycket du sparar per månad...">
+          <button class="btn" onclick="calculateGoal()">Beräkna</button>
+        </div>
+        <p id="goalResult">Inget sparmål satt än.</p>
+      </section>
+
+      <!-- Saldo -->
+      <section>
+        <h2>Saldo</h2>
+        <p id="balance">0 kr kvar</p>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="economics-page.js"></script>
+</body>
+</html>

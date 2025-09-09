@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dagbok</title>
+    <link rel="stylesheet" href="dagbok-page.css"> <!-- CSS hänvisning -->
+</head>
+<body>
+    <header>
+        <h1>Dagbok</h1>
+        <a href="main-page.html" class="back-btn">← Tillbaka</a>
+    </header>
+
+    <main>
+        <div class="diary-container">
+            <!-- Dag-navigering -->
+<div id="day-nav">
+    <button id="prevDay">← Föregående dag</button>
+    <span id="currentDateContainer">
+        <input type="date" id="date">
+    </span>
+    <button id="nextDay">Nästa dag →</button>
+</div>
+
+
+            <div class="diary-section">
+                <h2>Metrics</h2>
+                <div class="metrics">
+                    <div>
+                        <label>Productivity (/10):</label>
+                        <input type="number" id="productivity" min="0" max="10">
+                    </div>
+                    <div>
+                        <label>Mood (/10):</label>
+                        <input type="number" id="mood" min="0" max="10">
+                    </div>
+                </div>
+            </div>
+
+            <div class="diary-section">
+                <h2>Dagens Agenda</h2>
+                <input type="text" id="agenda1" placeholder="Skriv här...">
+                <input type="text" id="agenda2" placeholder="Skriv här...">
+                <input type="text" id="agenda3" placeholder="Skriv här...">
+                <input type="text" id="agenda4" placeholder="Skriv här...">
+            </div>
+
+            <div class="diary-section">
+                <h2>Reflection</h2>
+                <textarea id="reflection" placeholder="Reflektera över dagen..."></textarea>
+            </div>
+
+            <div class="diary-section">
+                <h2>One thing that was not good today</h2>
+                <input type="text" id="negative" placeholder="Skriv här...">
+            </div>
+
+            <div class="button-group">
+                <button id="saveDiary" class="btn save-btn">Spara</button>
+            </div>
+
+            <!-- Om du vill kan kalendern ligga här -->
+            <div id="calendar-wrapper"></div>
+        </div>
+    </main>
+
+    <script src="dagbok-page.js"></script> <!-- JS hänvisning -->
+</body>
+</html>

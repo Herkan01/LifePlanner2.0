@@ -1,0 +1,128 @@
+body {
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+    margin: 0;
+    background: linear-gradient(120deg, #e0f7fa, #fff3e0);
+    color: #333;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 1.8rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    position: relative;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.2rem;
+}
+
+header .back-btn {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background-color: rgba(255,255,255,0.2);
+    transition: background 0.2s;
+}
+
+header .back-btn:hover {
+    background-color: rgba(255,255,255,0.4);
+}
+
+main {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.todo-container {
+    width: 100%;
+    max-width: 600px;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#newTask {
+    flex: 1;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 1.1rem;
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+    background-color: #fcfcfc;
+}
+
+#newTask:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 8px rgba(76,175,80,0.3);
+}
+
+.btn {
+    background: linear-gradient(45deg, #4CAF50, #81C784);
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+#taskList {
+    list-style: none;
+    padding-left: 0;
+}
+
+#taskList li {
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    background-color: #fcfcfc;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+#taskList li.completed .task-text {
+    text-decoration: line-through;
+    color: #777;
+}
+
+#taskList li button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+#taskList li button:hover {
+    background-color: #c0392b;
+}
