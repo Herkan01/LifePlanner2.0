@@ -8,9 +8,7 @@ const nextWeekBtn = document.getElementById('nextWeek');
 let currentDate = new Date();
 
 // ----------------- Load events from localStorage -----------------
-let events = [];
-const savedEvents = localStorage.getItem('events');
-if (savedEvents) events = JSON.parse(savedEvents);
+let events = JSON.parse(localStorage.getItem('events') || '[]');
 
 // ----------------- Hjälpfunktioner -----------------
 function getMonday(d) {
@@ -63,26 +61,23 @@ function renderCalendar() {
         for (let hour = 6; hour <= 22; hour++) {
             const slot = document.createElement('div');
             slot.className = 'time-slot';
-            slot.dataset.time = `${hour}:00`;
+            slot.dataset.hour = hour;
 
             slot.addEventListener('click', () => {
                 const title = prompt("Titel på aktivitet:");
                 if (!title) return;
                 const desc = prompt("Anteckning (valfritt):") || "";
-                events.push({ title, desc, date: formatDate(dayDate), time: `${hour}:00` });
-                saveEvents(); // spara direkt
+                events.push({ title, desc, date: formatDate(dayDate), hour });
+                saveEvents();
                 renderCalendar();
             });
 
             dayDiv.appendChild(slot);
         }
 
-        // Visa befintliga event
-        events.forEach((event, index) => {
-            if (event.date !== formatDate(dayDate)) return;
-
-            const hour = parseInt(event.time.split(':')[0]);
-            const slot = dayDiv.querySelector(`.time-slot:nth-child(${hour - 5})`);
+        // Lägg till befintliga events
+        events.filter(ev => ev.date === formatDate(dayDate)).forEach((event, index) => {
+            const slot = dayDiv.querySelector(`.time-slot[data-hour='${event.hour}']`);
             if (!slot) return;
 
             const eventDiv = document.createElement('div');
@@ -96,9 +91,7 @@ function renderCalendar() {
             });
 
             // Long-press för radering
-            let rafId;
-            let circleDiv;
-            let pressTimer;
+            let rafId, circleDiv, pressTimer;
 
             eventDiv.addEventListener('mousedown', (e) => {
                 e.stopPropagation();
@@ -121,10 +114,9 @@ function renderCalendar() {
                         if (progress < 1) {
                             rafId = requestAnimationFrame(animateCircle);
                         } else {
-                            const confirmDelete = confirm(`Vill du ta bort aktiviteten "${event.title}"?`);
-                            if (confirmDelete) {
-                                events.splice(index, 1);
-                                saveEvents(); // spara ändringen
+                            if (confirm(`Vill du ta bort aktiviteten "${event.title}"?`)) {
+                                events.splice(events.indexOf(event), 1);
+                                saveEvents();
                                 renderCalendar();
                             }
                         }
