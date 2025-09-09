@@ -172,7 +172,7 @@ main {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    font-family: 'Patrick Hand', cursive;
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
 }
 
 .event:hover {
@@ -232,3 +232,4 @@ main {
         padding: 4px 6px;
     }
 }
+
