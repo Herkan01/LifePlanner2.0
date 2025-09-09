@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Träning - LifePlanner</title>
+    <link rel="stylesheet" href="träning-page.css">
+</head>
+<body>
+    <header>
+        <h1>Träning</h1>
+        <a href="main-page.html" class="back-btn">← Tillbaka</a>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Vänster kolumn: Lägg till övning -->
+            <div class="left-column">
+                <!-- Knapp-container högst upp till höger -->
+                <div class="top-buttons">
+                    <a href="new-workout-page.html" class="btn create-btn">Skapa pass</a>
+                    <a href="previous-training-page.html" class="btn past-btn">Tidigare pass</a>
+                </div>
+
+                <h2>Lägg till övning</h2>
+                <form id="exerciseForm">
+                    <label for="exercise">Välj övning:</label>
+                    <select id="exercise" required>
+                        <option value="">-- Välj övning --</option>
+
+                        <!-- Rygg -->
+                        <option value="Dumbell row">Dumbell row</option>
+                        <option value="Barbell row">Barbell row</option>
+                        <option value="Cablerow">Cablerow</option>
+                        <option value="Pull-ups">Pull-ups</option>
+                        <option value="Chin-ups">Chin-ups</option>
+                        <option value="Lat pulldown">Lat pulldown</option>
+                        <option value="Deadlift">Deadlift</option>
+
+                        <option disabled>──────────</option>
+
+                        <!-- Bröst -->
+                        <option value="Benchpress">Benchpress</option>
+                        <option value="Incline benchpress">Incline benchpress</option>
+                        <option value="Flat dumbbell press">Flat dumbbell press</option>
+                        <option value="Incline dumbbell press">Incline dumbbell press</option>
+                        <option value="High cableflies">High cableflies</option>
+                        <option value="Mid cableflies">Mid cableflies</option>
+                        <option value="Low cableflies">Low cableflies</option>
+                        <option value="Dumbbell flies">Dumbbell flies</option>
+                        <option value="Incline Machine press">Incline Machine press</option>
+                        <option value="Machine press">Machine press</option>
+
+                        <option disabled>──────────</option>
+
+                        <!-- Axlar -->
+                        <option value="Barbell press">Barbell press</option>
+                        <option value="Dumbbell press">Dumbbell press</option>
+                        <option value="Arnold press">Arnold press</option>
+                        <option value="Lateral raises">Lateral raises</option>
+                        <option value="Front raises">Front raises</option>
+                        <option value="Upright row">Upright row</option>
+                        <option value="Cable lateral raises">Cable lateral raises</option>
+                        <option value="Reverse cable crossover">Reverse cable crossover</option>
+                        <option value="Rear deltoid machine">Rear deltoid machine</option>
+                        <option value="Machine lateral raises">Machine lateral raises</option>
+
+                        <option disabled>──────────</option>
+
+                        <!-- Ben -->
+                        <option value="Barbell squats">Barbell squats</option>
+                        <option value="Leg extensions">Leg extensions</option>
+                        <option value="Bulgarian split squat">Bulgarian split squat</option>
+                        <option value="Good mornings">Good mornings</option>
+                        <option value="Leg press">Leg press</option>
+                        <option value="Abductor machine">Abductor machine</option>
+                        <option value="Romanian deadlifts">Romanian deadlifts</option>
+                        <option value="Hamstring curl">Hamstring curl</option>
+                        <option value="Glute kick backs">Glute kick backs</option>
+                        <option value="Calf extensions">Calf extensions</option>
+
+                        <option disabled>──────────</option>
+
+                        <!-- Core -->
+                        <option value="Cable crunches">Cable crunches</option>
+                        <option value="Crunch machine">Crunch machine</option>
+                        <option value="Hanging knee raises">Hanging knee raises</option>
+                        <option value="Knee raises">Knee raises</option>
+                        <option value="Russian twists">Russian twists</option>
+                        <option value="Decline crunches">Decline crunches</option>
+
+                        <option disabled>──────────</option>
+
+                        <!-- Armar -->
+                        <option value="Biceps curls">Biceps curls</option>
+                        <option value="Hammer curls">Hammer curls</option>
+                        <option value="Barbell Curls">Barbell Curls</option>
+                        <option value="Cable curls">Cable curls</option>
+                        <option value="Z-bar curls">Z-bar curls</option>
+
+                        <option value="Triceps pushdowns">Triceps pushdowns</option>
+                        <option value="Skull crushers">Skull crushers</option>
+                        <option value="Dips">Dips</option>
+                        <option value="Overhand dumbbell extensions">Overhand dumbbell extensions</option>
+                        <option value="Machine triceps extensions">Machine triceps extensions</option>
+                    </select>
+
+                    <label for="sets">Sets:</label>
+                    <input type="number" id="sets" min="1" max="10" required>
+
+                    <label for="reps">Reps:</label>
+                    <input type="number" id="reps" min="1" max="30" required>
+
+                    <label for="weight">Vikt (kg):</label>
+                    <input type="number" id="weight" min="0" max="500" required>
+
+                    <label for="comments">Kommentarer (valfritt):</label>
+                    <input type="text" id="comments" placeholder="Kommentar">
+
+                    <button type="submit" class="btn">Lägg till övning</button>
+                </form>
+
+                <h3>Övningar i passet:</h3>
+                <ul id="exerciseList"></ul>
+
+                <button id="completeWorkout" class="btn complete-btn">Klar</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="träning-page.js"></script>
+</body>
+</html>
