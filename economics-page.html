@@ -2,6 +2,7 @@
 <html lang="sv">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Min Ekonomi</title>
   <link rel="stylesheet" href="economics-page.css">
 </head>
@@ -12,20 +13,21 @@
   </header>
 
   <main>
-    <div class="todo-container">
+    <div class="container">
 
       <!-- Lön -->
       <section>
         <h2>Ange din lön</h2>
-        <input type="number" id="salaryInput" placeholder="Skriv in din lön...">
-        <button class="btn" onclick="setSalary()">Spara lön</button>
+        <div class="input-group">
+          <input type="number" id="salaryInput" placeholder="Skriv in din lön...">
+          <button class="btn" onclick="setSalary()">Spara lön</button>
+        </div>
       </section>
 
       <!-- Utgifter -->
       <section>
         <h2>Lägg till utgift</h2>
         <div class="input-group">
-          <!-- Kombinerad dropdown / fritt val -->
           <input list="expenseTypes" id="expenseName" placeholder="Utgift (t.ex. Hyra)">
           <datalist id="expenseTypes">
             <option value="Hyra">
@@ -70,9 +72,7 @@
     </div>
   </main>
 
-  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="economics-page.js"></script>
 </body>
 </html>
-
