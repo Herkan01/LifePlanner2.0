@@ -87,10 +87,10 @@ main {
     display: flex;
     flex-direction: row;
     width: 100%;
+    overflow-x: auto; /* Scrollbar om det inte får plats */
     max-width: 100%;
     background-color: #fff;
     border-radius: 12px;
-    overflow-x: auto;
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
@@ -116,26 +116,21 @@ main {
 
 /* ----------------- Kalender ----------------- */
 #calendar {
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(7, minmax(80px, 1fr));
-    gap: 1px;
-    background-color: #ccc;
+    display: flex; /* Flex istället för grid */
+    flex-direction: row;
+    min-width: 700px; /* säkerställer att alla dagar får plats */
 }
 
 /* ----------------- Dagar ----------------- */
 .day {
+    flex: 1;
+    min-width: 100px; /* minsta bredd för dag */
+    display: flex;
+    flex-direction: column;
+    margin: 1px;
     background-color: #fff;
-    min-height: 400px;
-    position: relative;
     border-radius: 10px;
     overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.day:hover {
-    transform: scale(1.01);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
 
 .day h4 {
@@ -145,7 +140,6 @@ main {
     background-color: #e6f2f1;
     font-weight: normal;
     border-bottom: 2px solid #ddd;
-    font-size: 0.9rem;
 }
 
 /* ----------------- Tidsrutor ----------------- */
@@ -154,7 +148,6 @@ main {
     height: 40px;
     position: relative;
     cursor: pointer;
-    transition: background-color 0.2s;
 }
 
 .time-slot:hover {
@@ -175,12 +168,6 @@ main {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    font-family: 'Roboto', 'Segoe UI', sans-serif;
-}
-
-.event:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 12px rgba(0,0,0,0.2);
 }
 
 /* ----------------- Long-press progress circle ----------------- */
@@ -198,40 +185,20 @@ main {
 }
 
 /* ----------------- Responsivitet ----------------- */
-@media (max-width: 900px) {
+@media (max-width: 600px) {
     #calendar-wrapper {
-        flex-direction: column;
+        min-width: 100%; /* Fyller hela skärmen */
+    }
+
+    #calendar {
+        min-width: 600px; /* gör att användaren kan scrolla horisontellt */
     }
 
     .day {
-        min-height: 300px;
+        min-width: 80px;
     }
 
     #time-column {
         width: 40px;
-    }
-}
-
-@media (max-width: 600px) {
-    #week-nav {
-        gap: 4px;
-    }
-
-    #week-nav button {
-        font-size: 0.8rem;
-        padding: 5px 6px;
-    }
-
-    .day {
-        min-height: 250px;
-    }
-
-    #time-column {
-        width: 30px;
-    }
-
-    .event {
-        font-size: 0.75rem;
-        padding: 3px 5px;
     }
 }
