@@ -1,0 +1,187 @@
+/* ---------------- Body & Header ---------------- */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background: #f0f2f5;
+    color: #333;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    position: relative;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+header .back-btn {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    background-color: rgba(255,255,255,0.2);
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+header .back-btn:hover {
+    background-color: rgba(255,255,255,0.4);
+}
+
+/* ---------------- Container ---------------- */
+.container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+/* ---------------- Måltidsfält ---------------- */
+.meal-input {
+    display: flex;
+    align-items: center;  
+    gap: 10px;
+    margin-bottom: 15px;
+    position: relative;   
+}
+
+.meal-input label {
+    width: 80px;             
+    font-weight: bold;
+    text-align: right;
+}
+
+.meal-input select,
+.meal-input input,
+.meal-input button {
+    height: 36px;            
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    padding: 0 8px;
+}
+
+.meal-input select {
+    flex: 1;                 
+}
+
+.add-btn {
+    background: linear-gradient(45deg, #45a049, #81C784);
+    color: white;
+    border: none;
+    padding: 0 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.add-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* ---------------- Suggestions Dropdown ---------------- */
+.suggestions {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    position: absolute;
+    top: 38px;  
+    left: 0;
+    width: calc(100% - 100px); 
+    background: white;
+    z-index: 100;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 6px;
+}
+
+.suggestions li {
+    padding: 8px 12px;
+    cursor: pointer;
+    border-bottom: none; 
+}
+
+.suggestions li:hover {
+    background-color: #f0f0f0;
+}
+
+/* ---------------- Dagens måltider ---------------- */
+#mealList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#mealList li {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: row; /* eller column om du vill ha diagram under */
+    align-items: flex-start;
+    gap: 12px;
+    max-width: 550px; /* begränsa bredden på hela rutan */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+#mealList li .meal-name {
+    font-weight: bold;
+    flex: 1 1 150px;
+    min-width: 120px;
+}
+
+#mealList li input {
+    width: 60px;
+    padding: 4px 6px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+#mealList li span.nutrients {
+    margin: 0 10px;
+    white-space: nowrap;
+    font-size: 0.95rem;
+}
+
+/* Ta bort-knappen */
+#mealList li .remove-btn {
+    background-color: #e53935;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+#mealList li .remove-btn:hover {
+    background-color: #d32f2f;
+    transform: translateY(-2px);
+}
+
+.nutrients-column {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.nutrient-chart {
+    margin-top: 0px;
+    max-width: 100px;
+}
