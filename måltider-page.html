@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kost - LifePlanner</title>
+<link rel="stylesheet" href="måltider.css">
+</head>
+<body>
+<header>
+    <h1>Kost</h1>
+    <a href="main-page.html" class="back-btn">← Tillbaka</a>
+</header>
+
+<main>
+<div class="container">
+
+    <!-- Kalender -->
+    <div class="calendar-controls">
+        <button id="prevDay">←</button>
+        <span id="currentDate"></span>
+        <button id="nextDay">→</button>
+    </div>
+
+    <h2>Välj måltid</h2>
+    <div class="meal-buttons">
+        <button id="frukostBtn">Frukost</button>
+        <button id="lunchBtn">Lunch</button>
+        <button id="middagBtn">Middag</button>
+        <button id="snacksBtn">Snacks</button>
+    </div>
+
+    <!-- Totalsumma per dag -->
+    <div class="total-box">
+        <h2>Totalsumma</h2>
+        <p>Kalorier: <span id="totalCalories">0</span> kcal</p>
+        <p>Protein: <span id="totalProtein">0</span> g</p>
+        <p>Fett: <span id="totalFat">0</span> g</p>
+        <p>Kolhydrater: <span id="totalCarbs">0</span> g</p>
+    </div>
+
+</div>
+</main>
+
+<script src="måltider-page.js"></script>
+</body>
+</html>
