@@ -31,6 +31,7 @@ header .back-btn {
     background-color: rgba(255,255,255,0.2);
     padding: 6px 12px;
     border-radius: 6px;
+    transition: background-color 0.2s ease;
 }
 
 header .back-btn:hover {
@@ -39,7 +40,7 @@ header .back-btn:hover {
 
 /* ---------------- Container ---------------- */
 .container {
-    max-width: 600px;         /* smalare container för mobilvänlighet */
+    max-width: 600px;            /* smalare container för mobilvänlighet */
     margin: 2rem auto;
     padding: 1rem;
 }
@@ -47,11 +48,11 @@ header .back-btn:hover {
 /* ---------------- Måltidsfält ---------------- */
 .meal-input {
     display: flex;
-    flex-direction: column;   /* stapla under varandra */
+    flex-direction: column;       /* stapla under varandra */
     align-items: flex-start;
     gap: 10px;
     margin-bottom: 20px;
-    max-width: 300px;         /* gör sektionen smalare */
+    max-width: 300px;             /* gör sektionen smalare */
     position: relative;
 }
 
@@ -63,7 +64,7 @@ header .back-btn:hover {
 /* Inputfält och knapp */
 .meal-input input,
 .meal-input button {
-    width: 100%;              /* fyller max 300px */
+    width: 100%;                  /* fyller max 300px */
     font-size: 1rem;
     border-radius: 8px;
     border: 1px solid #ccc;
@@ -94,9 +95,9 @@ header .back-btn:hover {
     max-height: 200px;
     overflow-y: auto;
     position: absolute;
-    top: 100%;   /* direkt under inputfältet */
+    top: 100%;                    /* direkt under inputfältet */
     left: 0;
-    width: 100%; /* samma bredd som input */
+    width: 100%;                  /* samma bredd som input */
     background: white;
     z-index: 100;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -106,6 +107,7 @@ header .back-btn:hover {
 .suggestions li {
     padding: 8px 12px;
     cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
 .suggestions li:hover {
@@ -129,7 +131,7 @@ header .back-btn:hover {
     flex-direction: row;
     align-items: flex-start;
     gap: 12px;
-    max-width: 100%; /* låt rutan följa containerns bredd */
+    max-width: 100%;              /* låt rutan följa containerns bredd */
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
@@ -170,6 +172,7 @@ header .back-btn:hover {
     transform: translateY(-2px);
 }
 
+/* ---------------- Näringskolumn & Diagram ---------------- */
 .nutrients-column {
     display: flex;
     flex-direction: column;
@@ -179,6 +182,6 @@ header .back-btn:hover {
 }
 
 .nutrient-chart {
-    margin-top: 0px;
+    margin-top: 0;
     max-width: 100px;
 }
