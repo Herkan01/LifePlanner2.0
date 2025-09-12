@@ -1,4 +1,3 @@
-/* ----------------- Body & Header ----------------- */
 body {
     font-family: 'Roboto', 'Segoe UI', sans-serif;
     margin: 0;
@@ -10,20 +9,20 @@ header {
     background-color: #4CAF50;
     color: white;
     text-align: center;
-    padding: 1.8rem 1rem;
-    font-size: 1.6rem;
+    padding: 2rem 1rem;
+    font-size: 1.8rem;
     box-shadow: 0 3px 10px rgba(0,0,0,0.15);
     position: relative;
 }
 
 header h1 {
     margin: 0;
-    font-size: 2rem;
+    font-size: 2.2rem;
 }
 
 header .back-btn {
     position: absolute;
-    left: 15px;
+    left: 20px;
     top: 50%;
     transform: translateY(-50%);
     text-decoration: none;
@@ -39,53 +38,44 @@ header .back-btn:hover {
     background-color: rgba(255,255,255,0.4);
 }
 
-/* ----------------- Main & Container ----------------- */
 main {
+    padding: 2rem;
     display: flex;
     justify-content: center;
-    padding: 1rem;
 }
 
 .container {
     width: 100%;
-    max-width: 600px;
+    max-width: 700px;
     background-color: #fff;
-    padding: 1.5rem;
+    padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    box-sizing: border-box;
 }
 
-/* ----------------- Sections ----------------- */
 section {
-    margin-bottom: 1.8rem;
+    margin-bottom: 2rem;
 }
 
 h2 {
     margin-top: 0;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     color: #4CAF50;
     border-bottom: 2px solid #4CAF50;
-    padding-bottom: 0.3rem;
+    padding-bottom: 0.4rem;
 }
 
-/* ----------------- Inputs & Buttons ----------------- */
-.input-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 0.5rem;
-}
-
+/* Inputfält */
 input {
-    flex: 1 1 120px; /* Begränsa bredden för mobil */
-    padding: 8px 10px;
+    padding: 10px 12px;
     border-radius: 10px;
     border: 1px solid #ccc;
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-family: 'Roboto', 'Segoe UI', sans-serif;
     background-color: #fcfcfc;
-    box-sizing: border-box;
+    flex: 1 1 auto;
+    min-width: 120px;
+    max-width: 250px; /* maxbredd så det inte blir jättelångt på mobil */
 }
 
 input:focus {
@@ -94,16 +84,27 @@ input:focus {
     box-shadow: 0 0 8px rgba(76,175,80,0.3);
 }
 
+/* Flexbox för input + knappar */
+.input-group {
+    display: flex;
+    flex-wrap: wrap; /* bryter rader vid små skärmar */
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+/* Knapp */
 .btn {
     background: linear-gradient(45deg, #4CAF50, #81C784);
     color: white;
     border: none;
-    padding: 8px 14px;
+    padding: 10px 16px;
     border-radius: 12px;
     font-weight: bold;
-    font-size: 0.95rem;
+    font-size: 1rem;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
+    flex: 0 0 auto;
+    max-width: 120px;
 }
 
 .btn:hover {
@@ -111,78 +112,71 @@ input:focus {
     box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 
-/* ----------------- Utgiftslista ----------------- */
+/* Expense-lista */
 #expenseList {
     list-style: none;
     padding-left: 0;
-    margin-top: 0.5rem;
+    margin: 0;
 }
 
 #expenseList li {
-    padding: 8px 10px;
-    margin-bottom: 8px;
+    padding: 10px 12px;
+    margin-bottom: 10px;
     background-color: #fcfcfc;
     border-radius: 10px;
     display: flex;
+    flex-direction: column; /* staplar namn + belopp på smal skärm */
+    gap: 6px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+#expenseList li div {
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.95rem;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 #expenseList li button {
     background-color: #e74c3c;
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 6px 12px;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
+    flex: 0 0 auto;
 }
 
 #expenseList li button:hover {
     background-color: #c0392b;
 }
 
-/* ----------------- Saldo ----------------- */
+/* Saldo */
 #balance {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: bold;
     color: #2c3e50;
-    margin-top: 8px;
+    margin-top: 10px;
 }
 
-/* ----------------- Diagram ----------------- */
+/* Diagram */
 canvas {
     max-width: 100%;
-    margin-top: 0.8rem;
+    margin-top: 1rem;
 }
 
-/* ----------------- Mobilanpassning ----------------- */
-@media (max-width: 600px) {
-    .input-group {
+/* Media query för riktigt små skärmar */
+@media (max-width: 480px) {
+    .input-group input,
+    .input-group .btn {
+        width: 100%; /* staplar input + knapp vertikalt */
+        max-width: 100%;
+    }
+
+    #expenseList li div {
         flex-direction: column;
-    }
-
-    input, .btn {
-        width: 100%;
-        font-size: 0.9rem;
-    }
-
-    h2 {
-        font-size: 1.2rem;
-    }
-
-    header h1 {
-        font-size: 1.6rem;
-    }
-
-    header .back-btn {
-        font-size: 0.9rem;
-        padding: 5px 10px;
-    }
-
-    #balance {
-        font-size: 1.1rem;
+        align-items: flex-start;
     }
 }
