@@ -28,7 +28,7 @@ header .back-btn {
     transform: translateY(-50%);
     text-decoration: none;
     color: white;
-    font-size: 0.9rem;
+    font-size: 1.5rem;
     padding: 6px 12px;
     border-radius: 6px;
     background-color: rgba(255,255,255,0.2);
@@ -189,3 +189,4 @@ main {
         width: 40px;
     }
 }
+
