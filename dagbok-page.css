@@ -159,14 +159,27 @@ textarea {
 #day-nav {
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 8px;
+    align-items: center; /* Vertikal centrering */
+    gap: 10px;
     margin-bottom: 1.5rem;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* Hindrar radbrytning */
+}
+
+#day-nav button,
+#day-nav input[type="date"] {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    height: 38px; /* Samma höjd som knappar */
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 0 12px;
 }
 
 #day-nav button {
-    padding: 8px 14px;
+    padding: 0 14px;
     border: none;
     border-radius: 12px;
     background: linear-gradient(45deg, #4CAF50, #81C784);
@@ -174,22 +187,9 @@ textarea {
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
-    font-family: 'Roboto', 'Segoe UI', sans-serif;
 }
 
 #day-nav button:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
-
-#day-nav input[type="date"] {
-    padding: 6px 10px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    font-family: 'Roboto', 'Segoe UI', sans-serif;
-    font-size: 1rem;
-}
-
-
-
-
