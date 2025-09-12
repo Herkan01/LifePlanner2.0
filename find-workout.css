@@ -1,0 +1,99 @@
+body {
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+    margin: 0;
+    background: linear-gradient(120deg, #e0f7fa, #fff3e0);
+    color: #333;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 1.8rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    position: relative;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.2rem;
+}
+
+header .back-btn {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+header .back-btn:hover {
+    background-color: rgba(255,255,255,0.4);
+}
+
+main {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    width: 100%;
+    justify-content: center;
+}
+
+.workout-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    flex: 1 1 300px;
+}
+
+.workout-card h2 {
+    margin-top: 0;
+    color: #4CAF50;
+}
+
+.workout-card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.workout-card li {
+    padding: 6px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.btn {
+    background: linear-gradient(45deg, #45a049, #81C784);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
