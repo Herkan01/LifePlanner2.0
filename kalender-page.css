@@ -109,3 +109,281 @@ main {
         padding: 6px;
     }
 }
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Modal */
+.modal {
+    background-color: #fff;
+    padding: 20px 25px;
+    border-radius: 12px;
+    min-width: 280px;
+    max-width: 90%;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.modal h3 {
+    margin-top: 0;
+}
+
+.modal label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.modal input, .modal select {
+    width: 100%;
+    padding: 6px 8px;
+    margin-top: 4px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.btn-container button {
+    flex: 1;
+    padding: 8px 12px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    background: linear-gradient(45deg, #4CAF50, #81C784);
+    color: white;
+    transition: background 0.2s;
+}
+
+.btn-container button:hover {
+    background: linear-gradient(45deg, #43a047, #66bb6a);
+}
+
+/* Mobilanpassning */
+@media (max-width: 600px) {
+    .modal {
+        min-width: 220px;
+        padding: 15px;
+    }
+
+    .btn-container button {
+        padding: 6px 8px;
+        font-size: 0.9rem;
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal {
+    background-color: #fff;
+    padding: 20px 25px;
+    border-radius: 12px;
+    min-width: 280px;
+    max-width: 90%;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.modal h3 {
+    margin-top: 0;
+}
+
+.modal label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.modal input, .modal select {
+    width: 100%;
+    padding: 6px 8px;
+    margin-top: 4px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.btn-container button {
+    flex: 1;
+    padding: 8px 12px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    background: linear-gradient(45deg, #4CAF50, #81C784);
+    color: white;
+    transition: background 0.2s;
+}
+
+.btn-container button:hover {
+    background: linear-gradient(45deg, #43a047, #66bb6a);
+}
+
+@media (max-width: 600px) {
+    .modal {
+        min-width: 220px;
+        padding: 15px;
+    }
+
+    .btn-container button {
+        padding: 6px 8px;
+        font-size: 0.9rem;
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal {
+    background-color: #fff;
+    padding: 20px 25px;
+    border-radius: 12px;
+    min-width: 260px;
+    max-width: 90%;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.modal h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.action-btn {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px 12px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #4CAF50, #81C784);
+    color: white;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.action-btn:hover {
+    background: linear-gradient(45deg, #43a047, #66bb6a);
+}
+
+/* Mobilanpassning */
+@media (max-width: 600px) {
+    .modal {
+        min-width: 220px;
+        padding: 15px;
+    }
+
+    .action-btn {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    min-width: 280px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.action-btn {
+    padding: 8px 12px;
+    margin: 4px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #4caf50, #81c784);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.action-btn:hover {
+    background: linear-gradient(45deg, #43a047, #66bb6a);
+}
+
+.remove-event {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 6px 10px;
+    margin: 4px 0;
+    border-radius: 8px;
+}
+
+.delete-btn {
+    background-color: #e57373;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f;
+}
