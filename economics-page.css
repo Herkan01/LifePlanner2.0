@@ -39,20 +39,20 @@ header .back-btn:hover {
 }
 
 main {
-    padding: 2rem;
-    display: flex;
-    justify-content: center;
+    padding: 1rem; 
 }
 
 .container {
     width: 100%;
     max-width: 700px;
     background-color: #fff;
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    box-sizing: border-box;
 }
 
+/* Sectioner */
 section {
     margin-bottom: 2rem;
 }
@@ -73,8 +73,8 @@ input {
     font-size: 1rem;
     font-family: 'Roboto', 'Segoe UI', sans-serif;
     background-color: #fcfcfc;
-    width: 100%; /* fyller alltid containern */
-    box-sizing: border-box; /* räknar padding in i width */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 input:focus {
@@ -83,12 +83,17 @@ input:focus {
     box-shadow: 0 0 8px rgba(76,175,80,0.3);
 }
 
-/* Flexbox för input + knappar */
+/* Input + knapp */
 .input-group {
     display: flex;
-    flex-direction: column; /* staplar vertikalt på alla skärmar */
     gap: 10px;
+    flex-wrap: wrap; /* gör det mobilt */
     margin-bottom: 15px;
+}
+
+.input-group input,
+.input-group button {
+    flex: 1 1 120px; /* tar plats men bryts på mobil */
 }
 
 /* Knapp */
@@ -102,8 +107,7 @@ input:focus {
     font-size: 1rem;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
-    width: 100%; /* fyller containern på mobil */
-    box-sizing: border-box;
+    min-width: 80px;
 }
 
 .btn:hover {
@@ -124,16 +128,17 @@ input:focus {
     background-color: #fcfcfc;
     border-radius: 10px;
     display: flex;
-    flex-direction: column; /* staplar namn + belopp + knapp */
+    flex-direction: column;
     gap: 6px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.08);
 }
 
+/* Flex för expense-items */
 #expenseList li div {
     display: flex;
-    flex-direction: column; /* staplar på mobil */
-    align-items: flex-start;
-    gap: 6px;
+    gap: 10px;
+    flex-wrap: wrap; /* bryts på mobil */
+    width: 100%;
 }
 
 #expenseList li button {
@@ -144,8 +149,7 @@ input:focus {
     border-radius: 8px;
     cursor: pointer;
     font-size: 0.9rem;
-    width: 100%; /* fyller container */
-    box-sizing: border-box;
+    align-self: flex-start;
 }
 
 #expenseList li button:hover {
@@ -164,4 +168,19 @@ input:focus {
 canvas {
     max-width: 100%;
     margin-top: 1rem;
+}
+
+/* Media Query för små skärmar */
+@media (max-width: 500px) {
+    .input-group {
+        flex-direction: column; /* staplar input + knapp */
+    }
+
+    #expenseList li div {
+        flex-direction: column; /* staplar expense-items */
+    }
+
+    .btn {
+        width: 100%; /* knappar fyller hela bredden */
+    }
 }
