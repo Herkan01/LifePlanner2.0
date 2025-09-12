@@ -387,3 +387,71 @@ main {
 .delete-btn:hover {
     background-color: #d32f2f;
 }
+
+.overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal {
+    position: relative;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    min-width: 280px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #555;
+}
+
+.close-btn:hover { color: #000; }
+
+.action-btn {
+    padding: 8px 12px;
+    margin: 5px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.action-btn:hover { background-color: #45a049; }
+
+.remove-event {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 10px;
+    margin: 4px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+}
+
+.delete-btn {
+    border: none;
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    width: 22px; height: 22px;
+    cursor: pointer;
+}
+
+.delete-btn:hover { background-color: #c0392b; }
