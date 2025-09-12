@@ -198,3 +198,52 @@ main {
         justify-content: flex-start;
     }
 }
+
+.top-buttons .find-btn {
+    background: linear-gradient(45deg, #45a049, #81C784);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.top-buttons .find-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* ----------------- Mobiljustering ----------------- */
+@media (max-width: 600px) {
+    main {
+        padding: 1rem;
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;  /* centrerar kolumnerna */
+        gap: 15px;
+    }
+
+    .left-column {
+        width: 100%;         /* fyller hela skärmen */
+        max-width: 100%;     /* tar inte mer än skärmen */
+        padding: 1.5rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .top-buttons {
+        flex-wrap: wrap;     /* knappar staplas snyggt */
+        justify-content: center;
+    }
+
+    .top-buttons a {
+        margin-bottom: 8px;
+    }
+}
