@@ -73,9 +73,8 @@ input {
     font-size: 1rem;
     font-family: 'Roboto', 'Segoe UI', sans-serif;
     background-color: #fcfcfc;
-    flex: 1 1 auto;
-    min-width: 120px;
-    max-width: 250px; /* maxbredd så det inte blir jättelångt på mobil */
+    width: 100%; /* fyller alltid containern */
+    box-sizing: border-box; /* räknar padding in i width */
 }
 
 input:focus {
@@ -87,7 +86,7 @@ input:focus {
 /* Flexbox för input + knappar */
 .input-group {
     display: flex;
-    flex-wrap: wrap; /* bryter rader vid små skärmar */
+    flex-direction: column; /* staplar vertikalt på alla skärmar */
     gap: 10px;
     margin-bottom: 15px;
 }
@@ -103,8 +102,8 @@ input:focus {
     font-size: 1rem;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
-    flex: 0 0 auto;
-    max-width: 120px;
+    width: 100%; /* fyller containern på mobil */
+    box-sizing: border-box;
 }
 
 .btn:hover {
@@ -125,17 +124,16 @@ input:focus {
     background-color: #fcfcfc;
     border-radius: 10px;
     display: flex;
-    flex-direction: column; /* staplar namn + belopp på smal skärm */
+    flex-direction: column; /* staplar namn + belopp + knapp */
     gap: 6px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.08);
 }
 
 #expenseList li div {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
+    flex-direction: column; /* staplar på mobil */
+    align-items: flex-start;
+    gap: 6px;
 }
 
 #expenseList li button {
@@ -146,7 +144,8 @@ input:focus {
     border-radius: 8px;
     cursor: pointer;
     font-size: 0.9rem;
-    flex: 0 0 auto;
+    width: 100%; /* fyller container */
+    box-sizing: border-box;
 }
 
 #expenseList li button:hover {
@@ -165,18 +164,4 @@ input:focus {
 canvas {
     max-width: 100%;
     margin-top: 1rem;
-}
-
-/* Media query för riktigt små skärmar */
-@media (max-width: 480px) {
-    .input-group input,
-    .input-group .btn {
-        width: 100%; /* staplar input + knapp vertikalt */
-        max-width: 100%;
-    }
-
-    #expenseList li div {
-        flex-direction: column;
-        align-items: flex-start;
-    }
 }
