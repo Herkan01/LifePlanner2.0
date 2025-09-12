@@ -39,19 +39,18 @@ header .back-btn:hover {
 }
 
 main {
-    padding: 1rem;
+    padding: 2rem;
     display: flex;
     justify-content: center;
 }
 
-.todo-container {
+.container {
     width: 100%;
     max-width: 700px;
     background-color: #fff;
-    padding: 1rem;
+    padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    box-sizing: border-box; /* viktigt */
 }
 
 section {
@@ -66,12 +65,41 @@ h2 {
     padding-bottom: 0.4rem;
 }
 
-/* Inputfält */
+/* ---------------- Input + knappar ---------------- */
+.input-group {
+    display: flex;
+    flex-wrap: wrap;          /* så det inte bryts onödigt */
+    gap: 10px;
+    margin-bottom: 15px;
+    align-items: center;      /* vertikal centrering */
+}
+
+.input-group input[type="number"],
+.input-group input[list] {
+    flex: 1 1 auto;           /* fyller utrymme men växer inte för mycket */
+    min-width: 80px;          /* liten minsta bredd */
+    max-height: 40px;         /* begränsa höjden */
+    padding: 6px 10px;        /* mindre padding för mindre höjd */
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.input-group .btn {
+    flex: 0 0 auto;           /* knapp behåller sin storlek */
+    max-height: 40px;         /* samma som input */
+    padding: 6px 12px;
+    font-size: 1rem;
+}
+
+/* Inputfält generellt */
 input {
-    padding: 10px;
     border-radius: 10px;
     border: 1px solid #ccc;
     font-size: 1rem;
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+    background-color: #fcfcfc;
     width: 100%;
     box-sizing: border-box;
 }
@@ -82,49 +110,6 @@ input:focus {
     box-shadow: 0 0 8px rgba(76,175,80,0.3);
 }
 
-/* Flexbox för input + knappar */
-.input-group {
-    display: flex;
-    flex-wrap: wrap;  /* Bryter på små skärmar */
-    gap: 10px;
-}
-
-.input-group input,
-.input-group button {
-    flex: 1 1 auto;
-    min-width: 80px;
-}
-
-/* På mobil staplas input + knapp */
-@media (max-width: 480px) {
-    .input-group {
-        flex-direction: column;
-    }
-    .input-group input,
-    .input-group button {
-        width: 100%;
-        min-width: 0;
-    }
-}
-
-/* Knapp */
-.btn {
-    background: linear-gradient(45deg, #4CAF50, #81C784);
-    color: white;
-    border: none;
-    padding: 10px 16px;
-    border-radius: 12px;
-    font-weight: bold;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-}
-
 /* Expense-lista */
 #expenseList {
     list-style: none;
@@ -133,36 +118,30 @@ input:focus {
 }
 
 #expenseList li {
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 8px 10px;
+    margin-bottom: 8px;
     background-color: #fcfcfc;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
 }
 
-#expenseList li div {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-}
-
-#expenseList li div span,
-#expenseList li div input {
-    flex: 1 1 80px;
-    min-width: 80px;
+#expenseList li span {
+    font-size: 0.95rem;
 }
 
 #expenseList li button {
+    flex: 0 0 auto;
+    padding: 4px 10px;
+    font-size: 0.85rem;
+    max-height: 35px;
     background-color: #e74c3c;
     color: white;
     border: none;
-    padding: 6px 12px;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 0.9rem;
-    width: 100%;
 }
 
 #expenseList li button:hover {
