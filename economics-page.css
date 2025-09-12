@@ -39,18 +39,19 @@ header .back-btn:hover {
 }
 
 main {
-    padding: 2rem;
+    padding: 1rem;
     display: flex;
     justify-content: center;
 }
 
-.container {
+.todo-container {
     width: 100%;
     max-width: 700px;
     background-color: #fff;
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    box-sizing: border-box; /* viktigt */
 }
 
 section {
@@ -67,13 +68,12 @@ h2 {
 
 /* Inputfält */
 input {
-    padding: 10px 12px;
+    padding: 10px;
     border-radius: 10px;
     border: 1px solid #ccc;
     font-size: 1rem;
-    font-family: 'Roboto', 'Segoe UI', sans-serif;
-    background-color: #fcfcfc;
-    box-sizing: border-box; /* padding räknas in i width */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 input:focus {
@@ -85,29 +85,24 @@ input:focus {
 /* Flexbox för input + knappar */
 .input-group {
     display: flex;
-    flex-wrap: wrap;      /* tillåter rader att brytas på små skärmar */
+    flex-wrap: wrap;  /* Bryter på små skärmar */
     gap: 10px;
-    margin-bottom: 15px;
 }
 
-.input-group input {
-    flex: 1 1 120px;      /* expanderar men minst 120px */
-    min-width: 120px;
-}
-
-.input-group .btn {
-    flex: 0 0 auto;       /* tar bara så mycket plats som behövs */
+.input-group input,
+.input-group button {
+    flex: 1 1 auto;
     min-width: 80px;
 }
 
-/* Media query för små skärmar */
+/* På mobil staplas input + knapp */
 @media (max-width: 480px) {
     .input-group {
-        flex-direction: column; /* stapla input + knapp på mobil */
+        flex-direction: column;
     }
     .input-group input,
-    .input-group .btn {
-        width: 100%;          /* fyller container */
+    .input-group button {
+        width: 100%;
         min-width: 0;
     }
 }
@@ -123,7 +118,6 @@ input:focus {
     font-size: 1rem;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
-    box-sizing: border-box;
 }
 
 .btn:hover {
@@ -139,25 +133,24 @@ input:focus {
 }
 
 #expenseList li {
-    padding: 10px 12px;
+    padding: 10px;
     margin-bottom: 10px;
     background-color: #fcfcfc;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     gap: 6px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
 }
 
 #expenseList li div {
     display: flex;
-    flex-wrap: wrap;        /* flex för expense items */
+    flex-wrap: wrap;
     gap: 6px;
 }
 
 #expenseList li div span,
 #expenseList li div input {
-    flex: 1 1 80px;         /* tar tillgängligt utrymme men inte för mycket */
+    flex: 1 1 80px;
     min-width: 80px;
 }
 
@@ -170,7 +163,6 @@ input:focus {
     cursor: pointer;
     font-size: 0.9rem;
     width: 100%;
-    box-sizing: border-box;
 }
 
 #expenseList li button:hover {
