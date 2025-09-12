@@ -52,7 +52,7 @@ main {
 .container {
     max-width: 900px;
     width: 100%;
-    margin: 0 auto;       /* centrerar */
+    margin: 0 auto;
     background-color: #fff;
     padding: 2rem;
     border-radius: 15px;
@@ -62,7 +62,7 @@ main {
 /* ----------------- Vänster kolumn ----------------- */
 .left-column {
     width: 100%;
-    padding: 0;           /* tar bort extra padding */
+    padding: 0;
 }
 
 /* ----------------- Top Buttons ----------------- */
@@ -125,9 +125,36 @@ main {
     background-color: #fcfcfc;
     border-radius: 10px;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap; /* bryter rader om inte plats */
+    gap: 10px;
     align-items: center;
     box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+#exerciseList li span {
+    flex: 1 1 100px; /* övningsnamn får minst 100px */
+    font-weight: bold;
+}
+
+#exerciseList li input[type="number"] {
+    width: 60px;
+}
+
+#exerciseList li button {
+    flex: 1 1 auto;
+    min-width: 80px;
+    background-color: #e57373;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 10px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+#exerciseList li button:hover {
+    background-color: #f44336;
+    transform: translateY(-2px);
 }
 
 /* ----------------- Knappar ----------------- */
@@ -169,5 +196,16 @@ main {
 
     .left-column {
         padding: 1rem;
+    }
+
+    /* Lista övningar blir vertikal på små skärmar */
+    #exerciseList li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #exerciseList li input[type="number"],
+    #exerciseList li button {
+        width: 100%; /* fullbredd input och knapp */
     }
 }
