@@ -31,7 +31,6 @@ header .back-btn {
     background-color: rgba(255,255,255,0.2);
     padding: 6px 12px;
     border-radius: 6px;
-    transition: background-color 0.2s ease;
 }
 
 header .back-btn:hover {
@@ -40,7 +39,7 @@ header .back-btn:hover {
 
 /* ---------------- Container ---------------- */
 .container {
-    max-width: 600px;            /* smalare container för mobilvänlighet */
+    max-width: 600px;
     margin: 2rem auto;
     padding: 1rem;
 }
@@ -48,11 +47,11 @@ header .back-btn:hover {
 /* ---------------- Måltidsfält ---------------- */
 .meal-input {
     display: flex;
-    flex-direction: column;       /* stapla under varandra */
+    flex-direction: column;
     align-items: flex-start;
     gap: 10px;
     margin-bottom: 20px;
-    max-width: 300px;             /* gör sektionen smalare */
+    max-width: 300px;
     position: relative;
 }
 
@@ -61,10 +60,9 @@ header .back-btn:hover {
     margin-bottom: 4px;
 }
 
-/* Inputfält och knapp */
 .meal-input input,
 .meal-input button {
-    width: 100%;                  /* fyller max 300px */
+    width: 100%;
     font-size: 1rem;
     border-radius: 8px;
     border: 1px solid #ccc;
@@ -95,9 +93,9 @@ header .back-btn:hover {
     max-height: 200px;
     overflow-y: auto;
     position: absolute;
-    top: 100%;                    /* direkt under inputfältet */
+    top: 100%;
     left: 0;
-    width: 100%;                  /* samma bredd som input */
+    width: 100%;
     background: white;
     z-index: 100;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -107,7 +105,6 @@ header .back-btn:hover {
 .suggestions li {
     padding: 8px 12px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
 }
 
 .suggestions li:hover {
@@ -128,11 +125,18 @@ header .back-btn:hover {
     padding: 10px;
     margin-bottom: 10px;
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 12px;
-    max-width: 100%;              /* låt rutan följa containerns bredd */
+    flex-direction: column;  /* stapla innehållet vertikalt */
+    gap: 8px;
+    max-width: 100%;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+#mealList li .top-row {
+    display: flex;           /* rad med matnamn + gram + näring */
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
 }
 
 #mealList li .meal-name {
@@ -150,7 +154,6 @@ header .back-btn:hover {
 }
 
 #mealList li span.nutrients {
-    margin: 0 10px;
     white-space: nowrap;
     font-size: 0.95rem;
 }
@@ -165,6 +168,7 @@ header .back-btn:hover {
     cursor: pointer;
     font-weight: bold;
     transition: all 0.2s ease;
+    align-self: flex-start;  /* hamnar längst ner vänster */
 }
 
 #mealList li .remove-btn:hover {
@@ -172,7 +176,6 @@ header .back-btn:hover {
     transform: translateY(-2px);
 }
 
-/* ---------------- Näringskolumn & Diagram ---------------- */
 .nutrients-column {
     display: flex;
     flex-direction: column;
@@ -182,6 +185,6 @@ header .back-btn:hover {
 }
 
 .nutrient-chart {
-    margin-top: 0;
+    margin-top: 0px;
     max-width: 100px;
 }
