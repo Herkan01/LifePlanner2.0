@@ -28,13 +28,13 @@ header .back-btn {
     transform: translateY(-50%);
     text-decoration: none;
     color: white;
-    font-size: 3rem; /* stor pil */
+    font-size: 1rem;
     padding: 6px 12px;
     border-radius: 6px;
+    background-color: rgba(255,255,255,0.2);
     transition: background 0.2s;
     z-index: 10;
 }
-
 
 header .back-btn:hover {
     background-color: rgba(255,255,255,0.4);
@@ -42,27 +42,33 @@ header .back-btn:hover {
 
 /* ----------------- Main & Container ----------------- */
 main {
-    padding: 2rem;
-    display: flex;
-    justify-content: center;
+    padding: 2rem 1rem;
+    display: block;  /* ta bort flex som kan ge off-center */
 }
+
 
 .container {
-    display: flex;
-    gap: 20px;
-    max-width: 1000px;
+    max-width: 900px;   /* precis som på Kost-sidan */
     width: 100%;
-    flex-wrap: wrap;
-}
-
-/* ----------------- Vänster kolumn ----------------- */
-.left-column {
-    flex: 2;
     background-color: #fff;
     padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    position: relative; /* för top-buttons */
+    margin: 0 auto;     /* centrerar horisontellt */
+    display: block;     /* tar bort flex som orsakar horisontell scroll */
+}
+
+
+/* ----------------- Vänster kolumn ----------------- */
+.left-column {
+    width: 100%;
+    max-width: 100%;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    position: relative;
+    box-sizing: border-box;
 }
 
 /* ----------------- Formulär ----------------- */
@@ -158,12 +164,18 @@ main {
 
 /* ----------------- Top Buttons (Tidigare pass & Skapa pass) ----------------- */
 .top-buttons {
-    position: absolute;
-    top: 20px;
-    right: 20px;
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
+    justify-content: flex-end; /* eller center på mobil */
 }
+
+@media (max-width: 600px) {
+    .top-buttons {
+        justify-content: center;
+    }
+}
+
 
 .top-buttons .past-btn,
 .top-buttons .create-btn {
@@ -247,5 +259,3 @@ main {
         margin-bottom: 8px;
     }
 }
-
-
