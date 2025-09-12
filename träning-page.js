@@ -9,24 +9,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let exercises = [];
 
-    // --- Rendera sparade pass i dropdown ---
+    // --- Initiera färdiga pass ---
+    function initDefaultWorkouts() {
+        let savedWorkouts = JSON.parse(localStorage.getItem('savedWorkouts')) || [];
+        if (savedWorkouts.length === 0) {
+            savedWorkouts = [
+                {
+                    name: "Bröst, Axlar & Triceps",
+                    exercises: [
+                        { exercise: "Benchpress", sets: 3, reps: 10, weight: 0 },
+                        { exercise: "Incline dumbbell press", sets: 3, reps: 12, weight: 0 },
+                        { exercise: "Lateral raises", sets: 3, reps: 15, weight: 0 },
+                        { exercise: "Arnold press", sets: 3, reps: 12, weight: 0 },
+                        { exercise: "Triceps pushdowns", sets: 3, reps: 12, weight: 0 }
+                    ]
+                },
+                {
+                    name: "Rygg & Biceps",
+                    exercises: [
+                        { exercise: "Pull-ups", sets: 3, reps: 8, weight: 0 },
+                        { exercise: "Barbell row", sets: 3, reps: 10, weight: 0 },
+                        { exercise: "Lat pulldown", sets: 3, reps: 12, weight: 0 },
+                        { exercise: "Biceps curls", sets: 3, reps: 12, weight: 0 },
+                        { exercise: "Hammer curls", sets: 3, reps: 12, weight: 0 }
+                    ]
+                },
+                {
+                    name: "Ben & Mage",
+                    exercises: [
+                        { exercise: "Barbell squats", sets: 4, reps: 8, weight: 0 },
+                        { exercise: "Leg press", sets: 3, reps: 12, weight: 0 },
+                        { exercise: "Hamstring curl", sets: 3, reps: 12, weight: 0 },
+                        { exercise: "Calf extensions", sets: 4, reps: 15, weight: 0 },
+                        { exercise: "Cable crunches", sets: 3, reps: 15, weight: 0 }
+                    ]
+                }
+            ];
+            localStorage.setItem('savedWorkouts', JSON.stringify(savedWorkouts));
+        }
+    }
+
+    // --- Rendera dropdown med sparade pass ---
     function renderSavedWorkoutsDropdown() {
         const savedWorkouts = JSON.parse(localStorage.getItem('savedWorkouts')) || [];
+        const baseOptions = Array.from(exerciseSelect.querySelectorAll("option"))
+            .filter(opt => !opt.value.startsWith("preset-"));
 
-        // Behåll vanliga övningar
-        const options = Array.from(exerciseSelect.options).filter(opt => !opt.value.startsWith('preset-'));
         exerciseSelect.innerHTML = '';
-        options.forEach(opt => exerciseSelect.appendChild(opt));
+        baseOptions.forEach(opt => exerciseSelect.appendChild(opt));
 
         if (savedWorkouts.length > 0) {
-            // Lägg till visuellt mellanrum innan sparade pass
             const separator = document.createElement('option');
             separator.disabled = true;
             separator.textContent = '──────────';
             exerciseSelect.appendChild(separator);
         }
 
-        // Lägg till sparade pass längst ner
         savedWorkouts.forEach((workout, index) => {
             const option = document.createElement('option');
             option.value = `preset-${index}`;
@@ -35,39 +73,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    initDefaultWorkouts();
     renderSavedWorkoutsDropdown();
 
-    // --- Ändra fält beroende på val ---
+    // --- Ändra input-fält beroende på val ---
     exerciseSelect.addEventListener('change', () => {
         const selectedValue = exerciseSelect.value;
-        if (selectedValue.startsWith('preset-')) {
-            // Sparat pass: ta bort required och inaktivera fälten
-            setsInput.required = false;
-            repsInput.required = false;
-            weightInput.required = false;
-            setsInput.disabled = true;
-            repsInput.disabled = true;
-            weightInput.disabled = true;
-        } else {
-            // Vanlig övning: återställ required och aktivera fälten
-            setsInput.required = true;
-            repsInput.required = true;
-            weightInput.required = true;
-            setsInput.disabled = false;
-            repsInput.disabled = false;
-            weightInput.disabled = false;
-        }
+        const isPreset = selectedValue.startsWith('preset-');
+
+        [setsInput, repsInput, weightInput].forEach(input => {
+            input.required = !isPreset;
+            input.disabled = isPreset;
+        });
     });
 
-    // --- Lägg till övning eller pass ---
+    // --- Lägg till övning eller sparat pass ---
     exerciseForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const selectedValue = exerciseSelect.value;
         if (!selectedValue) return;
 
         if (selectedValue.startsWith('preset-')) {
-            // Sparat pass
-            const index = parseInt(selectedValue.split('-')[1]);
+            // Lägg till hela sparat pass
+            const index = parseInt(selectedValue.split('-')[1], 10);
             const savedWorkouts = JSON.parse(localStorage.getItem('savedWorkouts')) || [];
             if (savedWorkouts[index]) {
                 savedWorkouts[index].exercises.forEach(ex => {
@@ -76,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderExercises();
             }
         } else {
-            // Vanlig övning
+            // Lägg till enskild övning
             const exercise = exerciseSelect.value;
             const sets = setsInput.value;
             const reps = repsInput.value;
@@ -87,27 +115,59 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            const newExercise = { exercise, sets, reps, weight };
-            exercises.push(newExercise);
+            exercises.push({ exercise, sets, reps, weight });
             renderExercises();
         }
 
         exerciseForm.reset();
     });
 
-    // --- Rendera listan ---
+    // --- Rendera listan med redigerbara övningar ---
     function renderExercises() {
         exerciseList.innerHTML = '';
         exercises.forEach((ex, index) => {
             const li = document.createElement('li');
-            li.textContent = `${ex.exercise} - ${ex.sets}x${ex.reps} @ ${ex.weight}kg`;
+
+            const nameSpan = document.createElement('span');
+            nameSpan.textContent = ex.exercise;
+
+            const setsField = document.createElement('input');
+            setsField.type = 'number';
+            setsField.value = ex.sets;
+            setsField.min = 1;
+            setsField.style.width = '50px';
+            setsField.addEventListener('input', () => ex.sets = setsField.value);
+
+            const repsField = document.createElement('input');
+            repsField.type = 'number';
+            repsField.value = ex.reps;
+            repsField.min = 1;
+            repsField.style.width = '50px';
+            repsField.addEventListener('input', () => ex.reps = repsField.value);
+
+            const weightField = document.createElement('input');
+            weightField.type = 'number';
+            weightField.value = ex.weight;
+            weightField.min = 0;
+            weightField.style.width = '60px';
+            weightField.addEventListener('input', () => ex.weight = weightField.value);
+
             const removeBtn = document.createElement('button');
             removeBtn.textContent = 'Ta bort';
             removeBtn.addEventListener('click', () => {
                 exercises.splice(index, 1);
                 renderExercises();
             });
+
+            li.appendChild(nameSpan);
+            li.appendChild(document.createTextNode(' Sets: '));
+            li.appendChild(setsField);
+            li.appendChild(document.createTextNode(' Reps: '));
+            li.appendChild(repsField);
+            li.appendChild(document.createTextNode(' Vikt: '));
+            li.appendChild(weightField);
             li.appendChild(removeBtn);
+
             exerciseList.appendChild(li);
         });
     }
@@ -119,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const workoutDate = new Date().toISOString().split('T')[0]; // yyyy-mm-dd
+        const workoutDate = new Date().toISOString().split('T')[0];
         const pastWorkouts = JSON.parse(localStorage.getItem('pastWorkouts')) || [];
 
         pastWorkouts.push({
@@ -129,7 +189,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         localStorage.setItem('pastWorkouts', JSON.stringify(pastWorkouts));
 
-        // Töm listan
         exercises = [];
         renderExercises();
         alert('Passet sparat! ✅');
