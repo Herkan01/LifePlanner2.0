@@ -134,14 +134,14 @@ header .back-btn:hover {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start; /* allt till vänster */
-    gap: 6px; /* litet gap mellan namn, gram och näring */
-    flex-wrap: wrap; /* så det inte blir enormt på små skärmar */
+    justify-content: flex-start;
+    gap: 4px;  /* litet gap */
 }
 
 #mealList li .meal-name {
     font-weight: bold;
-    flex: 0 0 auto; /* tar bara så mycket plats som behövs */
+    flex: 0 1 auto; /* tar bara plats som behövs */
+    min-width: 0;   /* tillåter att krympa på små skärmar */
 }
 
 #mealList li input {
@@ -170,7 +170,7 @@ header .back-btn:hover {
     font-weight: bold;
     transition: all 0.2s ease;
     align-self: flex-start; /* längst ner vänster */
-    margin-top: 4px; /* litet mellanrum från raden ovan */
+    margin-top: 6px;       /* litet avstånd från raden ovan */
 }
 
 #mealList li .remove-btn:hover {
