@@ -125,23 +125,23 @@ header .back-btn:hover {
     padding: 10px;
     margin-bottom: 10px;
     display: flex;
-    flex-direction: column;  /* stapla innehållet vertikalt */
-    gap: 4px;                 /* minska gap mellan rader */
+    flex-direction: column;  /* stapla top-row och remove-knapp */
     max-width: 100%;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    gap: 4px;  /* litet mellanrum mellan top-row och knapp */
 }
 
 #mealList li .top-row {
-    display: flex;           
+    display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 8px;                /* minska gap mellan namn och gram */
+    gap: 6px;  /* minskat gap mellan namn och gram */
     width: 100%;
 }
 
 #mealList li .meal-name {
     font-weight: bold;
-    flex: 0 1 auto;          /* namn tar bara den plats som behövs */
+    flex: 0 1 auto; /* tar bara den plats som behövs */
     min-width: 80px;
 }
 
@@ -168,8 +168,8 @@ header .back-btn:hover {
     cursor: pointer;
     font-weight: bold;
     transition: all 0.2s ease;
-    margin-top: auto;       /* tryck knappen längst ner */
-    align-self: flex-start; /* vänster */
+    align-self: flex-start; /* längst ner vänster */
+    margin-top: 4px;        /* litet mellanrum till raden ovan */
 }
 
 #mealList li .remove-btn:hover {
