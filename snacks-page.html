@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Måltid - LifePlanner</title>
+<link rel="stylesheet" href="nutrition-page.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<header>
+    <h1>Måltid</h1>
+    <a href="måltider-page.html" class="back-btn">← Tillbaka</a>
+</header>
+
+<main>
+<div class="container">
+
+    <!-- Frukost -->
+    <div class="meal-input">
+        <label for="snacks">Middag:</label>
+        <input type="text" id="snacks" placeholder="Sök mat">
+        <ul class="suggestions"></ul>
+        <input type="number" id="snacksGram" placeholder="Gram" min="0">
+        <button type="button" class="add-btn" data-meal="Snacks">Lägg till</button>
+    </div>
+
+    <h2>Måltidens innehåll</h2>
+    <ul id="mealList"></ul>
+
+    <h2>Näringsdiagram</h2>
+    <canvas id="totalChart" width="250" height="250"></canvas>
+
+</div>
+</main>
+
+<script src="livsmedel.js"></script>
+<script src="snacks-nutrition-page.js"></script>
+</body>
+</html>
