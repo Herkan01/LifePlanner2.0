@@ -4,6 +4,11 @@ body {
     margin: 0;
     background: linear-gradient(120deg, #e0f7fa, #fff3e0);
     color: #333;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
 }
 
 header {
@@ -28,47 +33,57 @@ header .back-btn {
     transform: translateY(-50%);
     text-decoration: none;
     color: white;
-    font-size: 1rem;
+    font-size: 1.5rem;
     padding: 6px 12px;
     border-radius: 6px;
-    background-color: rgba(255,255,255,0.2);
+    background-color: rgba(255,255,255,0.0); /* ingen mörk låda */
     transition: background 0.2s;
     z-index: 10;
 }
 
 header .back-btn:hover {
-    background-color: rgba(255,255,255,0.4);
+    background-color: rgba(255,255,255,0.2);
 }
 
 /* ----------------- Main & Container ----------------- */
 main {
     padding: 2rem 1rem;
-    display: block;  /* ta bort flex som kan ge off-center */
 }
 
-
 .container {
-    max-width: 900px;   /* precis som på Kost-sidan */
+    max-width: 900px;
     width: 100%;
+    margin: 0 auto;       /* centrerar */
     background-color: #fff;
     padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    margin: 0 auto;     /* centrerar horisontellt */
-    display: block;     /* tar bort flex som orsakar horisontell scroll */
 }
-
 
 /* ----------------- Vänster kolumn ----------------- */
 .left-column {
     width: 100%;
-    max-width: 100%;
-    padding: 2rem;
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    position: relative;
-    box-sizing: border-box;
+    padding: 0;           /* tar bort extra padding */
+}
+
+/* ----------------- Top Buttons ----------------- */
+.top-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.top-buttons a {
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .top-buttons {
+        justify-content: center;
+    }
 }
 
 /* ----------------- Formulär ----------------- */
@@ -116,23 +131,6 @@ main {
     box-shadow: 0 3px 10px rgba(0,0,0,0.08);
 }
 
-#exerciseList li button {
-    background: linear-gradient(45deg, #45a049, #81C784);
-    color: white;
-    border: none;
-    padding: 12px 18px;
-    border-radius: 25px;
-    font-weight: bold;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-#exerciseList li button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-}
-
 /* ----------------- Knappar ----------------- */
 .left-column .btn {
     background: linear-gradient(45deg, #45a049, #81C784);
@@ -155,80 +153,9 @@ main {
     box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 
-/* ----------------- Klar-knapp ----------------- */
 .complete-btn {
     width: 100%;
     margin-top: 15px;
-    /* Samma stil som övriga knappar */
-}
-
-/* ----------------- Top Buttons (Tidigare pass & Skapa pass) ----------------- */
-.top-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: flex-end; /* eller center på mobil */
-}
-
-@media (max-width: 600px) {
-    .top-buttons {
-        justify-content: center;
-    }
-}
-
-
-.top-buttons .past-btn,
-.top-buttons .create-btn {
-    background: linear-gradient(45deg, #45a049, #81C784);
-    color: white;
-    padding: 12px 20px;
-    border-radius: 25px;
-    font-weight: bold;
-    font-size: 1.1rem;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.top-buttons .past-btn:hover,
-.top-buttons .create-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-}
-
-/* ----------------- Responsivitet ----------------- */
-@media (max-width: 900px) {
-    .container {
-        flex-direction: column;
-    }
-    .top-buttons {
-        position: static;
-        margin-bottom: 15px;
-        justify-content: flex-start;
-    }
-}
-
-.top-buttons .find-btn {
-    background: linear-gradient(45deg, #45a049, #81C784);
-    color: white;
-    padding: 12px 20px;
-    border-radius: 25px;
-    font-weight: bold;
-    font-size: 1.1rem;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.top-buttons .find-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 
 /* ----------------- Mobiljustering ----------------- */
@@ -238,24 +165,10 @@ main {
     }
 
     .container {
-        flex-direction: column;
-        align-items: center;  /* centrerar kolumnerna */
-        gap: 15px;
+        padding: 1rem;
     }
 
     .left-column {
-        width: 100%;         /* fyller hela skärmen */
-        max-width: 100%;     /* tar inte mer än skärmen */
-        padding: 1.5rem;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-
-    .top-buttons {
-        flex-wrap: wrap;     /* knappar staplas snyggt */
-        justify-content: center;
-    }
-
-    .top-buttons a {
-        margin-bottom: 8px;
+        padding: 1rem;
     }
 }
