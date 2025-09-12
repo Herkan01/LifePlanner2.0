@@ -30,7 +30,6 @@ header .back-btn {
     font-size: 1.5rem;
     padding: 6px 12px;
     border-radius: 6px;
-    background-color: rgba(255,255,255,0.2);
     transition: background 0.2s;
 }
 
@@ -190,5 +189,6 @@ textarea {
     font-family: 'Roboto', 'Segoe UI', sans-serif;
     font-size: 1rem;
 }
+
 
 
