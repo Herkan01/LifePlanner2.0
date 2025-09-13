@@ -46,9 +46,10 @@ function showAddEventPopup(dayDate) {
     timeLabel.appendChild(timeSelect);
     modal.appendChild(timeLabel);
 
+    modal.appendChild(document.createElement('br'));
+    modal.appendChild(document.createElement('br'));
+
     // Textinput
-    modal.appendChild(document.createElement('br'));
-    modal.appendChild(document.createElement('br'));
     const nameLabel = document.createElement('label');
     nameLabel.textContent = 'Aktivitet: ';
     const nameInput = document.createElement('input');
@@ -128,6 +129,46 @@ function renderCalendar() {
             const titleEl = document.createElement('h3');
             titleEl.textContent = `Åtgärder för ${formatDate(dayDate)}`;
             modal.appendChild(titleEl);
+
+            // Se aktiviteter-knapp
+            const viewBtn = document.createElement('button');
+            viewBtn.textContent = 'Se aktiviteter';
+            viewBtn.className = 'action-btn';
+            viewBtn.addEventListener('click', () => {
+                overlay.remove();
+                if (dayEvents.length === 0) {
+                    alert("Inga aktiviteter denna dag.");
+                    return;
+                }
+
+                const viewOverlay = document.createElement('div');
+                viewOverlay.className = 'overlay';
+
+                const viewModal = document.createElement('div');
+                viewModal.className = 'modal';
+
+                const viewTitle = document.createElement('h3');
+                viewTitle.textContent = `Aktiviteter - ${formatDate(dayDate)}`;
+                viewModal.appendChild(viewTitle);
+
+                dayEvents.forEach(ev => {
+                    const eventContainer = document.createElement('div');
+                    eventContainer.className = 'view-event';
+                    eventContainer.textContent = `${ev.time} - ${ev.title}`;
+                    viewModal.appendChild(eventContainer);
+                });
+
+                const closeView = document.createElement('button');
+                closeView.textContent = 'Stäng';
+                closeView.className = 'action-btn';
+                closeView.addEventListener('click', () => viewOverlay.remove());
+                viewModal.appendChild(document.createElement('br'));
+                viewModal.appendChild(closeView);
+
+                viewOverlay.appendChild(viewModal);
+                document.body.appendChild(viewOverlay);
+            });
+            modal.appendChild(viewBtn);
 
             // Ta bort aktivitet-knapp
             const removeBtn = document.createElement('button');
