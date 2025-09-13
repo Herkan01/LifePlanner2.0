@@ -94,8 +94,8 @@ backBtnHeader.onclick = () => {
     showList();
     renderNotes();
   } else {
-    // Vi är på första sidan -> gå till main-page.html
-    window.location.href = "main-page.html";
+    // Vi är på första sidan -> gå till index.html
+    window.location.href = "index.html";
   }
 };
 
@@ -114,3 +114,4 @@ noteText.addEventListener("input", () => {
 // Init
 renderNotes();
 showList();
+
