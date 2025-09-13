@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anteckningar - LifePlanner</title>
+  <link rel="stylesheet" href="anteckningar-page.css">
+</head>
+<body>
+  <header>
+    <h1>Anteckningar</h1>
+  </header>
+
+  <main>
+    <!-- Förstasida -->
+    <div id="note-list">
+      <button id="new-note-btn">+ Ny anteckning</button>
+      <div id="notes-container"></div>
+    </div>
+
+    <!-- Anteckningsvy -->
+    <div id="note-editor" class="hidden">
+      <header>
+        <button id="back-btn">← Tillbaka</button>
+      </header>
+      <textarea id="note-text" placeholder="Skriv din anteckning här..."></textarea>
+    </div>
+  </main>
+
+  <script src="anteckningar-page.js"></script>
+</body>
+</html>
