@@ -6,10 +6,33 @@ body {
 
 /* Header */
 header {
+  position: relative;
   background: #4CAF50;
   color: white;
   padding: 1rem;
   text-align: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+header .back-btn {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  display: none; /* syns bara i editorn */
+}
+
+header .back-btn:hover {
+  color: #ddd;
 }
 
 /* Förstasida */
@@ -26,83 +49,68 @@ header {
   font-weight: bold;
   cursor: pointer;
   margin-bottom: 1rem;
+  transition: background 0.2s;
+}
+
+#new-note-btn:hover {
+  background: #45a049;
 }
 
 #notes-container {
   display: grid;
   gap: 10px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .note-card {
+  position: relative;
   background: white;
   padding: 12px;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   cursor: pointer;
-  transition: background 0.2s;
 }
 
 .note-card:hover {
   background: #f1f1f1;
 }
 
-/* Anteckningsvy */
-#note-editor {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
-#note-editor header {
-  background: #4CAF50;
-  color: white;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-}
-
-#note-editor header button {
+.note-card .delete-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
   background: none;
   border: none;
-  color: white;
-  font-size: 1.2rem;
+  color: #aaa;
+  font-size: 16px;
   cursor: pointer;
+  padding: 0;
+}
+
+.note-card .delete-btn:hover {
+  color: #f44336;
+}
+
+/* Editor */
+#note-editor {
+  display: none; /* visas bara vid ny eller öppen anteckning */
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
 }
 
 #note-text {
   flex: 1;
-  padding: 1rem;
+  padding: 2.5rem 1rem 1rem 1rem;
   font-size: 16px;
   border: none;
   outline: none;
   resize: none;
 }
 
-/* Göm vyer */
-.hidden {
-  display: none;
-}
-
-/* Behåll korten centrerade på större skärmar */
-#notes-container {
-  display: grid;
-  gap: 10px;
-  max-width: 600px; /* <-- aldrig bredare än 600px */
-  margin: 0 auto;
-}
-
-/* Anteckningskort */
-.note-card {
-  background: white;
-  padding: 12px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  cursor: pointer;
-  transition: background 0.2s;
-  word-wrap: break-word;
-}
-
-/* Gör så att på större skärmar kan kort ligga i två kolumner */
+/* Responsivitet */
 @media (min-width: 768px) {
   #notes-container {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
